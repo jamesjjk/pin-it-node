@@ -185,7 +185,7 @@ module.exports = function PinItNode(options) {
                 'Accept-Encoding': 'gzip, deflate',
                 'Connection': 'keep-alive'
             },
-            gzip: true,
+            //gzip: true,
             jar: cookieJar
         }, function(error3, response3, body3) {
 
@@ -208,7 +208,7 @@ module.exports = function PinItNode(options) {
             // _log(response3);
             var idLocation = _getIndicesOf("board_id", body3.toString(), false);
             var nameLocation = _getIndicesOf('<a href="', body3.toString(), false);
-
+            _log(response3);
             for (var i = 1; i < (idLocation.length / 3); i++) {
                 boardIdList[i - 1] = body3.toString().substring(idLocation[i * 3] + 12, idLocation[i * 3] + 30);
                 if (boardIdList[i - 1] === boardIdList[i - 2]) {
@@ -249,10 +249,10 @@ module.exports = function PinItNode(options) {
                 'Referer': 'https://www.pinterest.com/login/',
                 'Accept-Language': 'en-US,en;q=0.8'
             },
-            gzip: true,
+            //gzip: true,
             form: {
                 source_url: '/pin/create/button/?url=' + url + '&description=' + description + '&media=' + media,
-                data: '{"options":{"board_id":"' + boardId + '","description":"' + description + '","link":"' + url + '","image_url":"' + media + '","method":"button","is_video":null},"context":{}}',
+                data: '{"options":{"board_id":"' + boardId + '","description":"' + description + '","link":"' + url + '","image_url":"' + media + '","method":"button"},"context":{}}',
                 module_path: 'App()>PinBookmarklet()>PinCreate()>PinForm(description=' + description + ', default_board_id="", show_cancel_button=true, cancel_text=Close, link=' + url + ', show_uploader=false, image_url=' + media + ', is_video=null, heading=Pick a board, pin_it_script_button=true)'
             },
             jar: cookieJar
@@ -301,7 +301,7 @@ module.exports = function PinItNode(options) {
                 'Accept-Encoding': 'gzip, deflate',
                 'Accept-Language': 'en-US,en;q=0.5'
             },
-            gzip: true,
+            //gzip: true,
             form: {
                 source_url: '/' + userurl + '/' + boardurl + '/',
                 data: '{"options":{"id":"' + pinId + '"},"context":{}}',
@@ -351,7 +351,7 @@ module.exports = function PinItNode(options) {
                 'Accept-Encoding': 'gzip, deflate',
                 'Accept-Language': 'en-US,en;q=0.5'
             },
-            gzip: true,
+            //gzip: true,
             form: {
                 source_url: '/' + userurl + '/' + boardurl + '/',
                 data: '{"options":{"board_id":"' + boardId + '","description":"' + description + '","link":"' + url + '","id":"' + pinId + '"},"context":{}}',
@@ -396,7 +396,7 @@ module.exports = function PinItNode(options) {
                 'Referer': 'https://www.pinterest.com/' + userurl + '/',
                 'Accept-Language': 'en-US,en;q=0.8'
             },
-            gzip: true,
+            //gzip: true,
             form: {
                 source_url: '/' + userurl + '/',
                 data: '{"options":{"name":"' + boardName + '","category":"' + boardCategory + '","description":"' + description + '","privacy":"' + boardPrivacy + '","layout":"default"},"context":{}}',
@@ -434,7 +434,7 @@ module.exports = function PinItNode(options) {
                 'Referer': 'https://www.pinterest.com/' + userurl + '/' + boardurl + '/',
                 'Accept-Language': 'en-US,en;q=0.5'
             },
-            gzip: true,
+            //gzip: true,
             form: {
                 source_url: '/' + userurl + '/' + boardurl + '/',
                 data: '{"options":{"board_id":"' + boardId + '"},"context":{}}',
@@ -479,7 +479,7 @@ module.exports = function PinItNode(options) {
                 'Referer': 'https://www.pinterest.com/userurl/',
                 'Accept-Language': 'en-US,en;q=0.5'
             },
-            gzip: true,
+            //gzip: true,
             form: {
                 source_url: '/' + userurl + '/' + boardurl + '/',
                 data: '{"options":{"name":"' + boardName + '","category":"' + boardCategory + '","description":"' + description + '","layout":"default","board_id":"' + boardId + '"},"context":{}}',
